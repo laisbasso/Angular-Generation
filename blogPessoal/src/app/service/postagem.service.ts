@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Postagem } from '../model/Postagem';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,9 @@ export class PostagemService {
 
   deletePostagem(id: number) {
     return this.http.delete(`http://localhost:8080/postagens/${id}`, this.token)
+  }
+
+  getByTituloPostagem(titulo: string){
+    return this.http.get(`http://localhost:8080/postagens/titulo/${titulo}`, this.token)
   }
 }
